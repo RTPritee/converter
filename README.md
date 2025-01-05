@@ -74,8 +74,8 @@ This project provides functionality for converting `.json` files to `.csv` forma
 
 ## Screenshots
 
-### 1. Login Page  
+### 1. FastApi 
 ![1](https://github.com/user-attachments/assets/cc98502a-785a-45dc-b3e7-bfdb445208ff)
 
-### 2. File Upload Page  
+### 2.   
 ![2](https://github.com/user-attachments/assets/42717140-6250-4203-a42a-1af2aa7623ff)
