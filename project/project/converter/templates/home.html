@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Converter</title>
+    {% load static %}
+    <script src="{% static 'js/app.js' %}"></script>
+</head>
+<body>
+    <h1>JSON to CSV File Convert</h1>
+    <form id="upload-form" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" id="file" name="file" accept=".json" required>
+        <button type="submit">Convert</button>
+    </form>
+</body>
+</html>
