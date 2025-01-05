@@ -1,0 +1,22 @@
+<!-- landing.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="logout-container">
+        <a href="{% url 'logout' %}" class="btn logout-btn">Logout</a>  <!-- Logout Button -->
+    </div>
+
+    <div class="landing-container">
+        <h1>Welcome to the Landing Page!</h1>
+        <p>You are successfully logged in.</p>
+        <a href="{% url 'file_upload' %}" class="btn">Go to File Conversion</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>File Upload</title>
+    <script>
+        function convertFile() {
+            const form = document.getElementById("uploadForm");
+            const formData = new FormData(form);
+
+            // post request to convert
+            fetch("{% url 'file_upload' %}", {
+                method: "POST",
+                body: formData,
+                headers: {
+                    "X-CSRFToken": "{{ csrf_token }}",
+                },
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.download) {
+                        document.getElementById("convertButton").style.display = "none";
+                        document.getElementById("downloadButton").style.display = "block";
+                    } else if (data.error) {
+                        alert(data.error);
+                    }
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                    alert("An error occurred during file conversion.");
+                });
+        }
+    </script>
+</head>
+<body>
+        <!-- Logout Button -->
+    <div class="logout-container">
+        <a href="{% url 'logout' %}" class="btn logout-btn">Logout</a>
+    </div>
+    <h2>Upload a JSON File to Convert to CSV</h2>
+    <form id="uploadForm" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="file">Choose JSON File:</label>
+        <input type="file" name="file" required><br><br>
+        <button type="button" id="convertButton" onclick="convertFile()">Convert</button>
+    </form>
+    <br>
+    <button id="downloadButton" style="display: none;" onclick="window.location.href='{% url 'download_csv' %}'">Download</button>
+</body>
+</html>
